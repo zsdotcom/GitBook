@@ -1,0 +1,10 @@
+# Never commit secrets — GitBook API tokens, personal access tokens, etc.
+.env
+.env.*
+!.env.example
+*.local
+.internal/
+
+# Editor/OS noise
+.DS_Store
+node_modules/

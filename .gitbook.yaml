@@ -1,0 +1,20 @@
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+redirects:
+  index: README.md
+  # ZUSS restructure renames: old index.md pages now live as 000-* landings
+  # (or are merged into README). Keep old inbound links working.
+  001-zs-meta/index: 001-zs-meta/000-standards-and-references.md
+  002-zs-foundation/index: README.md
+  003-zs-platform/index: 003-zs-platform/000-platform-architecture.md
+  004-zs-index/index: 004-zs-index/000-zarish-index.md
+  005-zs-standards/index: 005-zs-standards/000-zarish-standards.md
+  006-zs-infrastructure/index: 006-zs-infrastructure/000-infrastructure.md
+  007-zs-tech-stack/index: 007-zs-tech-stack/000-technology-stack.md
+  008-zs-adrs/index: 008-zs-adrs/000-architecture-decision-records.md
+  009-zs-operations/index: 009-zs-operations/000-operations.md
+  010-zs-ecosystem/index: 010-zs-ecosystem/000-product-ecosystem.md

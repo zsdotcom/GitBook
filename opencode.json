@@ -1,0 +1,90 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    "_raw/docs/001-zs-meta/004-zarishsphere-writing-rules.md"
+  ],
+  "default_agent": "build",
+  "subagent_depth": 2,
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "ls *": "allow",
+      "cat *": "allow",
+      "grep *": "allow",
+      "find *": "allow",
+      "tree *": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git add *": "ask",
+      "git commit *": "ask",
+      "git push *": "deny",
+      "rm *": "deny",
+      "chmod -R a-w _raw*": "allow",
+      "markdownlint-cli2 *": "allow",
+      "vale *": "allow"
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": {
+      "*": "allow"
+    }
+  },
+  "agent": {
+    "librarian": {
+      "description": "Read-only. Inventories and classifies _raw/ source material. Never edits or writes files.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "deny",
+          "grep *": "allow",
+          "find *": "allow",
+          "cat *": "allow",
+          "ls *": "allow"
+        }
+      }
+    },
+    "architect": {
+      "description": "Designs the GitBook README.md/SUMMARY.md structure and the _raw -> gitbook-zarishsphere content map. Proposes plans; does not write final content without approval.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "deny",
+          "grep *": "allow",
+          "find *": "allow",
+          "cat *": "allow",
+          "ls *": "allow",
+          "tree *": "allow"
+        }
+      }
+    },
+    "editor": {
+      "description": "Writes and rewrites approved pages inside gitbook-zarishsphere/ only, applying ZUSS + GitBook formatting rules.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "markdownlint-cli2 *": "allow",
+          "vale *": "allow",
+          "git status*": "allow",
+          "git diff*": "allow"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "gitbook": {
+      "type": "remote",
+      "url": "https://mcp.gitbook.com/mcp",
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITBOOK_API_TOKEN}"
+      },
+      "enabled": true
+    }
+  }
+}

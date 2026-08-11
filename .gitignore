@@ -1,9 +1,16 @@
-# Never commit secrets — GitBook API tokens, personal access tokens, etc.
+# Never commit secrets
 .env
 .env.*
 !.env.example
 *.local
+
+# Working artifacts, not published content
 .internal/
+
+# The founder's raw scratch corpus should not ship in the public docs repo
+# either — confirm this is correct for your actual git layout before
+# initializing a repo here; see AGENTS.md workspace map.
+/_raw/
 
 # Editor/OS noise
 .DS_Store

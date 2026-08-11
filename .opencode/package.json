@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@gitbook/api": "^0.191.0",
+    "@opencode-ai/plugin": "1.18.9"
+  }
+}
